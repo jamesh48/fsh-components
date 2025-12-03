@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "projects": [
+    {
+      "name": "my-web-app",
+      "path": "../my-web-app",
+      "enabled": true,
+      "description": "Main web application"
+    },
+    {
+      "name": "admin-dashboard",
+      "path": "../admin-dashboard",
+      "enabled": false,
+      "description": "Admin dashboard - disabled by default"
+    },
+    {
+      "name": "mobile-app",
+      "path": "../../mobile/mobile-app",
+      "enabled": true,
+      "description": "React Native mobile app"
+    }
+  ],
+  "_instructions": [
+    "1. Copy this file to yalc.projects.json",
+    "2. Update the paths to point to your local projects",
+    "3. Set enabled: true for projects you want to auto-update",
+    "4. Run 'yarn yalc:watch' to start watching and auto-pushing to enabled projects",
+    "Note: Paths are relative to the fsh-components directory"
+  ]
+}

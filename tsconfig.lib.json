@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "strict": true,
+
+    /* Declaration generation */
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./dist/types",
+    "rootDir": "./src"
+  },
+  "include": ["src/index.ts", "src/stories/**/*.tsx", "src/stories/**/*.ts"],
+  "exclude": ["src/**/*.stories.ts", "src/**/*.test.ts", "src/**/*.test.tsx", "**/*.spec.ts", "src/main.tsx", "src/App.tsx"]
+}
