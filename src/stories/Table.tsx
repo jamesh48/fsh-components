@@ -68,6 +68,11 @@ export interface TablePropsInterface {
     sx: SxProps;
   };
 
+  sx?: {
+    row?: SxProps;
+    header?: SxProps
+  };
+
   styles?: {
     paper?: React.CSSProperties;
     table?: React.CSSProperties;
@@ -111,7 +116,12 @@ const CursorPagination = ({
   onPreviousPage?: () => void;
 }) => {
   return (
-    <Stack direction="row" justifyContent="center" spacing={2} sx={{ marginTop: "1rem", paddingBottom: "1.4rem" }}>
+    <Stack
+      direction="row"
+      justifyContent="center"
+      spacing={2}
+      sx={{ marginTop: "1rem", paddingBottom: "1.4rem" }}
+    >
       <button
         onClick={() => onPreviousPage?.()}
         disabled={!canGoBack}
@@ -276,6 +286,7 @@ const Table = ({
   // Cursor-based pagination props
   paginationType = "numbered",
   nextToken,
+  sx,
   hasMore = false,
   onNextPage,
   onPreviousPage,
@@ -322,7 +333,13 @@ const Table = ({
   const renderTableBody = () => {
     return getRowModel().rows.map((row, idx) => {
       return (
-        <StyledTableRow data-cy="table-row" data-row-index={idx} key={row.id} style={styles?.row}>
+        <StyledTableRow
+          data-cy="table-row"
+          data-row-index={idx}
+          key={row.id}
+          style={styles?.row}
+          sx={sx?.row}
+        >
           {row.getVisibleCells().map((cell, index) => {
             const minWidth = `${cell.column.columnDef.minSize ?? 0}px`;
             const maxWidth = `${cell.column.columnDef.maxSize ?? 0}px`;
@@ -352,7 +369,10 @@ const Table = ({
     });
   };
 
-  const handlePageChange = (_event: React.ChangeEvent<unknown> | KeyboardEvent, nextPage: number = 1) => {
+  const handlePageChange = (
+    _event: React.ChangeEvent<unknown> | KeyboardEvent,
+    nextPage: number = 1,
+  ) => {
     setCurrentPage?.(nextPage === 0 ? 1 : nextPage);
     // resetRowSelection()
   };
@@ -386,6 +406,7 @@ const Table = ({
                         sx={{
                           cursor: header.column.getCanSort() ? "pointer" : "",
                           background: "gray",
+                          ...sx?.header
                         }}
                         colSpan={header.colSpan}
                         style={styles?.headerCell}
