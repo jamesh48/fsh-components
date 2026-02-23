@@ -1,9 +1,9 @@
-import { Button as MuiButton } from '@mui/material';
 import type { ButtonProps as MuiBaseButtonProps } from '@mui/material';
+import { Button as MuiButton } from '@mui/material';
 
 export interface MuiButtonProps extends Omit<MuiBaseButtonProps, 'children'> {
-  /** Button contents */
-  label: string;
+	/** Button contents */
+	label: string;
 }
 
 /**
@@ -11,14 +11,14 @@ export interface MuiButtonProps extends Omit<MuiBaseButtonProps, 'children'> {
  * Uses Material-UI v7 Button component
  */
 export const Button = ({
-  label,
-  color = 'primary',
-  variant = 'contained',
-  ...props
+	label,
+	color = 'primary',
+	variant = 'contained',
+	...props
 }: MuiButtonProps) => {
-  return (
-    <MuiButton color={color} variant={variant} {...props}>
-      {label}
-    </MuiButton>
-  );
+	return (
+		<MuiButton color={color} variant={variant} {...props}>
+			{label}
+		</MuiButton>
+	);
 };

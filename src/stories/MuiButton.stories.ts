@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
-import { MuiButton } from './Button';
+import { Button } from './Button';
 
 const meta = {
   title: 'Example/MuiButton',
-  component: MuiButton,
+  component: Button,
   parameters: {
     layout: 'centered',
   },
@@ -27,7 +27,7 @@ const meta = {
     },
   },
   args: { onClick: fn() },
-} satisfies Meta<typeof MuiButton>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
